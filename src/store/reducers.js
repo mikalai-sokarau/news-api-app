@@ -8,10 +8,9 @@ const reducer = (state = INITIAL_STATE, action) => {
             const newFavoriteNewsItem = {
                 data: action.payload.data,
                 id: action.payload.id,
-                isFavorite: true
             };
 
-            result = Object.assign({}, ...state, {
+            result = Object.assign({}, state, {
                 favoriteNews: [...state.favoriteNews, newFavoriteNewsItem]
             });
             break;
@@ -20,7 +19,7 @@ const reducer = (state = INITIAL_STATE, action) => {
             const filteredFavoriteNews = state.favoriteNews
                 .filter(item => item.id !== action.id)
 
-            result = Object.assign({}, ...state, {
+            result = Object.assign({}, state, {
                 favoriteNews: filteredFavoriteNews
             });
             break;
@@ -31,7 +30,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         default: result = state;
     }
 
-    console.log(result);
+    // console.log(result);
     return result;
 }
 

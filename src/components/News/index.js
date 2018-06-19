@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 import { NewSingle } from "./NewSingle";
 import { Error } from "./../Error";
-import { getNewsFrom } from "../../store/actionCreators";
+import {
+  getNewsFrom,
+  addNewsToFavorite,
+  removeNewsFromFavorite
+} from "../../store/actionCreators";
 import { API_KEY } from "../../common/constants";
 
 class News extends Component {
   state = {
     news: [],
     error: false,
-    newsSource: 'BBC'
+    newsSource: "BBC"
   };
 
   componentDidMount() {
@@ -20,11 +24,12 @@ class News extends Component {
 
     fetch(url)
       .then(res => res.json())
-      .then(data =>
+      .then(data => {
+        this.props.addNewsToFavorite(data.articles[0], data.articles[0].url);
         this.setState({
           news: data.articles
-        })
-      )
+        });
+      })
       .catch(() =>
         this.setState({
           error: true
@@ -45,15 +50,17 @@ class News extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   news: state.news
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getNewsFrom: (source) => dispatch(getNewsFrom(source))
-})
+const mapDispatchToProps = dispatch => ({
+  getNewsFrom: source => dispatch(getNewsFrom(source)),
+  addNewsToFavorite: (data, id) => dispatch(addNewsToFavorite(data, id)),
+  removeNewsFromFavorite: id => dispatch(removeNewsFromFavorite(id))
+});
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(News);

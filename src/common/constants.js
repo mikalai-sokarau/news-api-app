@@ -9,7 +9,7 @@ const ACTIONS = {
 const INITIAL_STATE = {
   news: [],
   sideNews: [],
-  favoriteNews: [],
-}
+  favoriteNews: []
+};
 
 export { API_KEY, ACTIONS, INITIAL_STATE };
