@@ -1,1 +1,1 @@
-Feed app# news-api-app
+Simple news-api-app
