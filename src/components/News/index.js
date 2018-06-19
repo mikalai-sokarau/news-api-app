@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 
 import { NewSingle } from "./NewSingle";
+import { Error } from "./../Error";
 import { API_KEY } from "../../constants";
 
 export class News extends Component {
   state = {
-    news: []
+    news: [],
+    error: false
   };
 
   componentDidMount() {
@@ -20,13 +22,19 @@ export class News extends Component {
           news: data.articles
         })
       )
-      .catch(error => console.log(error));
+      .catch(() =>
+        this.setState({
+          error: true
+        })
+      );
   }
 
   renderItems() {
-    return this.state.news.map(item => (
-      <NewSingle key={item.url} item={item} />
-    ));
+    return !this.state.error ? (
+      this.state.news.map(item => <NewSingle key={item.url} item={item} />)
+    ) : (
+      <Error />
+    );
   }
 
   render() {
