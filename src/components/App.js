@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import { News } from "./News";
-import { SideNews } from "./SideNews";
+import News from "./News";
+import SideNews from "./SideNews";
 
 export class App extends Component {
   state = {
@@ -29,10 +29,10 @@ export class App extends Component {
         </div>
         <div className="row">
           <div className="col s8">
-            <News news={this.state.news1} />
+            <News source={this.state.news1} />
           </div>
           <div className="col s4">
-            <SideNews news={this.state.news2} />
+            <SideNews source={this.state.news2} />
           </div>
         </div>
       </div>

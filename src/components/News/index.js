@@ -1,19 +1,22 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 
 import { NewSingle } from "./NewSingle";
 import { Error } from "./../Error";
-import { API_KEY } from "../../constants";
+import { getNewsFrom } from "../../store/actionCreators";
+import { API_KEY } from "../../common/constants";
 
-export class News extends Component {
+class News extends Component {
   state = {
     news: [],
-    error: false
+    error: false,
+    newsSource: 'BBC'
   };
 
   componentDidMount() {
-    const url = `https://newsapi.org/v2/${this.props.news.type}?${
-      this.props.news.query
-    }&apiKey=${API_KEY}`;
+    const url = `https://newsapi.org/v2/${this.props.source.type}?${
+      this.props.source.query
+      }&apiKey=${API_KEY}`;
 
     fetch(url)
       .then(res => res.json())
@@ -33,11 +36,24 @@ export class News extends Component {
     return !this.state.error ? (
       this.state.news.map(item => <NewSingle key={item.url} item={item} />)
     ) : (
-      <Error />
-    );
+        <Error />
+      );
   }
 
   render() {
     return <div className="row">{this.renderItems()}</div>;
   }
 }
+
+const mapStateToProps = (state) => ({
+  news: state.news
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getNewsFrom: (source) => dispatch(getNewsFrom(source))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(News);

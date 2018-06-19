@@ -1,19 +1,21 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import axios from "axios";
 
 import { SingleSide } from "./SingleSide";
 import { Error } from "./../Error";
-import { API_KEY } from "../../constants";
+import { getNewsFrom } from "../../store/actionCreators";
+import { API_KEY } from "../../common/constants";
 
-export class SideNews extends Component {
+class SideNews extends Component {
   state = {
     sideNews: [],
     error: false
   };
 
   componentDidMount() {
-    const url = `https://newsapi.org/v2/${this.props.news.type}?${
-      this.props.news.query
+    const url = `https://newsapi.org/v2/${this.props.source.type}?${
+      this.props.source.query
     }&apiKey=${API_KEY}`;
 
     axios
@@ -42,3 +44,15 @@ export class SideNews extends Component {
     return <div className="row">{this.renderItems()}</div>;
   }
 }
+const mapStateToProps = (state) => ({
+  sideNews: state.sideNews
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getNewsFrom: (source) => dispatch(getNewsFrom(source))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SideNews);
