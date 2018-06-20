@@ -7,4 +7,33 @@ const ACTIONS = {
   RECEIVED_NEWS_FROM: "RECEIVED_NEWS_FROM"
 };
 
-export { API_KEY, ACTIONS };
+const NEWS_SOURCES = [
+  {
+    name: "CNN",
+    type: "top-headlines",
+    query: "sources=cnn"
+  },
+  {
+    name: "The New York Times",
+    type: "top-headlines",
+    query: "sources=the-new-york-times"
+  },
+  {
+    name: "Daily Mail",
+    type: "top-headlines",
+    query: "sources=daily-mail"
+  },
+  {
+    name: "ESPN",
+    type: "top-headlines",
+    query: "sources=espn"
+  },
+];
+
+const ASIDE_NEWS_SOURCES = {
+  name: "Google News",
+  type: "top-headlines",
+  query: "sources=google-news"
+}
+
+export { API_KEY, ACTIONS, NEWS_SOURCES, ASIDE_NEWS_SOURCES };

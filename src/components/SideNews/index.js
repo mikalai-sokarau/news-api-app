@@ -1,23 +1,25 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from 'react-redux';
 import { SingleSide } from "./SingleSide";
 import { Error } from "./../Error";
 import { getNewsFrom } from "../../store/actionCreators";
+import { NEWS_SOURCES, ASIDE_NEWS_SOURCES } from "../../common/constants";
 
 class SideNews extends Component {
   state = {
-    error: false
+    error: false,
+    activeNews: ASIDE_NEWS_SOURCES
   };
 
   componentDidMount() {
     const options = {
       consumer: this.constructor.name,
-      source: this.props.source
+      source: this.state.activeNews
     }
     this.props.getNewsFrom(options);
   }
 
-  renderItems() {
+  renderNewsArticles() {
     return !this.state.error ? (
       this.props.sideNews.map(item => <SingleSide key={item.url} item={item} />)
     ) : (
@@ -25,8 +27,24 @@ class SideNews extends Component {
       );
   }
 
+  renderNewsSources() {
+    return NEWS_SOURCES.map(item => (
+      <a
+        href="#!"
+        key={item.name}
+        className="collection-item"
+        // onClick={this.props.getNewsFrom}
+      >{item.name}</a>)
+    );
+  }
+
   render() {
-    return <div className="row">{this.renderItems()}</div>;
+    return (
+      <Fragment>
+        <div className="collection">{this.renderNewsSources()}</div>
+        <div className="row">{this.renderNewsArticles()}</div>
+      </Fragment>
+    );
   }
 }
 

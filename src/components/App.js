@@ -4,16 +4,8 @@ import SideNews from "./SideNews";
 
 export class App extends Component {
   state = {
-    news1: {
-      type: "top-headlines",
-      query: "sources=cnn"
-    },
-    news2: {
-      type: "everything",
-      query: "domains=comicbookmovie.com&language=en"
-    },
-    isFavoriteShow: false,
-  };
+    isFavoriteShow: false
+  }
 
   favoriteNewsClickHandler = () => {
     this.setState({
@@ -43,10 +35,10 @@ export class App extends Component {
         </div>
         <div className="row">
           <div className="col s8">
-            <News source={this.state.news1} />
+            <News />
           </div>
           <div className="col s4">
-            <SideNews source={this.state.news2} />
+            <SideNews />
           </div>
         </div>
       </div>

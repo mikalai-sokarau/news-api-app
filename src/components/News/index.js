@@ -3,21 +3,23 @@ import { connect } from "react-redux";
 import { NewSingle } from "./NewSingle";
 import { Error } from "./../Error";
 import { getNewsFrom } from "../../store/actionCreators";
+import { NEWS_SOURCES } from "../../common/constants";
 
 class News extends Component {
   state = {
     error: false,
+    activeNews: NEWS_SOURCES[3]
   };
 
   componentDidMount() {
     const options = {
       consumer: this.constructor.name,
-      source: this.props.source
+      source: this.state.activeNews
     }
     this.props.getNewsFrom(options);
   }
 
-  renderItems() {
+  renderNews() {
     return !this.state.error ? (
       this.props.news.map(item => <NewSingle key={item.url} item={item} />)
     ) : (
@@ -26,7 +28,7 @@ class News extends Component {
   }
 
   render() {
-    return <div className="row">{this.renderItems()}</div>;
+    return <div className="row">{this.renderNews()}</div>;
   }
 }
 
