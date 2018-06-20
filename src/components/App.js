@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import News from "./News";
 import SideNews from "./SideNews";
 
@@ -7,20 +6,13 @@ export class App extends Component {
   state = {
     news1: {
       type: "top-headlines",
-      query: "sources=bbc-news"
+      query: "sources=cnn"
     },
     news2: {
       type: "everything",
       query: "domains=comicbookmovie.com&language=en"
     },
-    isFavoriteNewsChecked: false,
   };
-
-  checkBoxHandler = () => {
-    this.setState({
-      isFavoriteNewsChecked: !this.state.isFavoriteNewsChecked
-    })
-  }
 
   render() {
     return (
@@ -32,24 +24,6 @@ export class App extends Component {
                 <a href="/" className="bran-logo-center">
                   MY FEED
                 </a>
-              </div>
-              <div className="col s3">
-                <div className="input-field col s12">
-                  <select>
-                    <option defaultValue="" disabled >Choose your option</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                  {/* <label>Materialize Select</label> */}
-                </div>
-              </div>
-              <div className="col s4"></div>
-              <div className="col s3">
-                <label>
-                  <input type="checkbox" onClick={this.checkBoxHandler} className="filled-in" />
-                  <span>Show farorite</span>
-                </label>
               </div>
             </div>
           </nav>

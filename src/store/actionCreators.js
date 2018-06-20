@@ -15,11 +15,14 @@ const removeNewsFromFavorite = (id) => ({
     }
 });
 
-const getNewsFrom = (source) => ({
+const getNewsFrom = (options) => ({
     type: ACTIONS.GET_NEWS_FROM,
-    payload: {
-        source
-    }
+    payload: { ...options }
 });
 
-export { addNewsToFavorite, removeNewsFromFavorite, getNewsFrom };
+const recievedNewsFrom = (options) => ({
+    type: ACTIONS.RECEIVED_NEWS_FROM,
+    payload: { ...options }
+})
+
+export { addNewsToFavorite, removeNewsFromFavorite, getNewsFrom, recievedNewsFrom };

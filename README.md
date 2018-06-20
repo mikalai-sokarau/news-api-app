@@ -1,1 +1,1 @@
-Simple news-api-app
+Simple news app

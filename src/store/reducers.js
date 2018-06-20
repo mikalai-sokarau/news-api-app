@@ -1,8 +1,12 @@
-import { ACTIONS, INITIAL_STATE } from '../common/constants';
+import { ACTIONS } from '../common/constants';
+
+const INITIAL_STATE = {
+    news: [],
+    sideNews: [],
+    favoriteNews: []
+};
 
 const reducer = (state = INITIAL_STATE, action) => {
-    let result;
-
     switch (action.type) {
         case ACTIONS.ADD_NEWS_TO_FAVORITE:
             const newFavoriteNewsItem = {
@@ -10,28 +14,29 @@ const reducer = (state = INITIAL_STATE, action) => {
                 id: action.payload.id,
             };
 
-            result = Object.assign({}, state, {
+            return Object.assign({}, state, {
                 favoriteNews: [...state.favoriteNews, newFavoriteNewsItem]
             });
-            break;
 
         case ACTIONS.REMOVE_NEWS_FROM_FAVORITE:
             const filteredFavoriteNews = state.favoriteNews
                 .filter(item => item.id !== action.id)
 
-            result = Object.assign({}, state, {
+            return Object.assign({}, state, {
                 favoriteNews: filteredFavoriteNews
             });
-            break;
 
-        case ACTIONS.GET_NEWS_FROM:
-            break;
+        case ACTIONS.RECEIVED_NEWS_FROM:
+            const key = getNewsConsumer(state, action);
+            return Object.assign({}, state, { [key]: action.payload.data.articles });
 
-        default: result = state;
+        default: return state;
     }
+}
 
-    // console.log(result);
-    return result;
+function getNewsConsumer(state, action) {
+    const lowerCasedConsumer = action.payload.consumer.toLowerCase();
+    return Object.keys(state).find(key => key.toLowerCase() === lowerCasedConsumer);
 }
 
 export { reducer };
