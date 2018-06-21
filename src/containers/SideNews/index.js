@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { SingleSide } from "./SingleSide";
+import SingleSide from "../../components/SingleSide";
 import { getNewsFrom } from "../../store/actionCreators";
 import { ASIDE_NEWS_SOURCES } from "../../common/constants";
 
@@ -20,15 +20,7 @@ class SideNews extends PureComponent {
   render = () => <div>{this.renderNewsArticles()}</div>;
 }
 
-const mapStateToProps = store => ({
-  sideNews: store.sideNews
-});
-
-const mapDispatchToProps = dispatch => ({
-  getNewsFrom: options => dispatch(getNewsFrom(options))
-});
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  store => ({ sideNews: store.sideNews }),
+  dispatch => ({ getNewsFrom: options => dispatch(getNewsFrom(options)) })
 )(SideNews);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import News from "./News";
+import News from "../containers/News";
 import SidePanel from "./SidePanel";
 import NavBar from "./NavBar";
 

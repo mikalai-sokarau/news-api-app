@@ -19,7 +19,7 @@ const NewSingle = ({ item }) => (
         <Star style={starStyles} color='aliceblue' title="Add to favorite" />
       </div>
       <div className="card-content">
-        <p className="truncate">{item.title}</p>
+        <p>{item.title}</p>
       </div>
       <div className="card-action">
         <a href={item.url} target="_blank">FULL ARTICLE</a>
@@ -28,4 +28,4 @@ const NewSingle = ({ item }) => (
   </div>
 );
 
-export { NewSingle };
+export default NewSingle;
