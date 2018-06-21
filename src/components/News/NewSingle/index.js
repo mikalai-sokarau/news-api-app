@@ -4,14 +4,12 @@ import Star from 'react-icons/lib/fa/star';
 const starStyles = {
   position: 'absolute',
   top: 10,
-  // left: 10
   right: 10,
   fontSize: '1.8rem',
-  // color: 'gold',
   opacity: 0.6
 };
 
-export const NewSingle = ({ item }) => (
+const NewSingle = ({ item }) => (
   <div className="col s4 hoverable">
     <div className="card small">
       <div className="card-image" style={{ position: 'relative' }}>
@@ -29,3 +27,5 @@ export const NewSingle = ({ item }) => (
     </div>
   </div>
 );
+
+export { NewSingle };

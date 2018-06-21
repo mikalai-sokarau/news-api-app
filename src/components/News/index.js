@@ -1,34 +1,40 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { NewSingle } from "./NewSingle";
-import { Error } from "./../Error";
 import { getNewsFrom } from "../../store/actionCreators";
 import { NEWS_SOURCES } from "../../common/constants";
 
-class News extends Component {
-  state = {
-    error: false,
-    activeNews: NEWS_SOURCES[3]
-  };
-
+class News extends PureComponent {
   componentDidMount() {
+    this.getNews();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.source !== prevProps.source) {
+      this.getNews();
+    }
+  }
+
+  getNews = () => {
     const options = {
       consumer: this.constructor.name,
-      source: this.state.activeNews
+      source: NEWS_SOURCES
+        .find(item => item.shortName === this.props.source)
+        || NEWS_SOURCES[0]
     }
+
     this.props.getNewsFrom(options);
   }
 
-  renderNews() {
-    return !this.state.error ? (
-      this.props.news.map(item => <NewSingle key={item.url} item={item} />)
-    ) : (
-        <Error />
-      );
-  }
+  renderNews = () => this.props.news
+    .map(item => <NewSingle key={item.url} item={item} />)
 
   render() {
-    return <div className="row">{this.renderNews()}</div>;
+    return (
+      <div className="col s8">
+        <div className="row">{this.renderNews()}</div>
+      </div>
+    )
   }
 }
 

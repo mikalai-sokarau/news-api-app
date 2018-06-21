@@ -1,47 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
+import { Route } from "react-router-dom";
 import News from "./News";
-import SideNews from "./SideNews";
+import SidePanel from "./SidePanel";
+import NavBar from "./NavBar";
 
-export class App extends Component {
-  state = {
-    isFavoriteShow: false
-  }
-
-  favoriteNewsClickHandler = () => {
-    this.setState({
-      isFavoriteShow: !this.state.isFavoriteShow
-    })
-  }
-
-  render() {
-    return (
-      <div className="container-fluid">
-        <div className="navbar-fixed">
-          <nav>
-            <div className="nav-wrapper indigo lighten-4 row">
-              <div className="col s9">
-                <a href="/" className="bran-logo-center">
-                  MY FEED
-                </a>
-              </div>
-              <div className="col s3">
-                <label>
-                  <input type="checkbox" className="filled-in" onClick={this.favoriteNewsClickHandler} />
-                  <span>Show favorite news</span>
-                </label>
-              </div>
-            </div>
-          </nav>
-        </div>
+const App = () => (
+  <div className="container-fluid">
+    <NavBar />
+    <Route
+      path="/:source?"
+      render={({ match }) => (
         <div className="row">
-          <div className="col s8">
-            <News />
-          </div>
-          <div className="col s4">
-            <SideNews />
-          </div>
+          <News source={match.params.source} />
+          <SidePanel source={match.params.source} />
         </div>
-      </div>
-    );
-  }
-}
+      )}
+    />
+  </div>
+);
+
+export { App };

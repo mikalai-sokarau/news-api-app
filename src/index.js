@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
+import { BrowserRouter, Route } from 'react-router-dom'
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import "materialize-css/dist/css/materialize.min.css";
@@ -15,7 +16,9 @@ sagaMiddleware.run(rootSaga);
 
 render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <Route component={App} />  
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
