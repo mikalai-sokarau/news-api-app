@@ -9,10 +9,10 @@ const App = () => (
     <NavBar />
     <Route
       path="/:source?"
-      render={({ match }) => (
+      render={({ match: {params: {source}} }) => (
         <div className="row">
-          <News source={match.params.source} />
-          <SidePanel source={match.params.source} />
+          <News source={source} />
+          <SidePanel source={source} />
         </div>
       )}
     />

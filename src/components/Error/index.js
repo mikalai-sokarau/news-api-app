@@ -1,9 +1,25 @@
 import React from "react";
 
-const Error = () => (
-  <div>
-    <h1>There is nothing interesting right now, try later!</h1>
-  </div>
-);
+class Error extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  componentDidCatch() {
+    this.setState({ hasError: true });
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div>
+          <h2>Something went wrong!</h2>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 export default Error;

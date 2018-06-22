@@ -1,13 +1,15 @@
 import React from "react";
 import Star from 'react-icons/lib/fa/star';
+import styled from 'styled-components';
 
-const starStyles = {
-  position: 'absolute',
-  top: 10,
-  right: 10,
-  fontSize: '1.8rem',
-  opacity: 0.6
-};
+const StyledStar = styled(Star)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.8rem;
+  opacity: 0.6;
+  color: aliceblue;
+`;
 
 const NewSingle = ({ item }) => (
   <div className="col s4 hoverable">
@@ -15,7 +17,7 @@ const NewSingle = ({ item }) => (
       <div className="card-image" style={{ position: 'relative' }}>
         <img src={item.urlToImage} alt={item.title} />
         <span className="card-title">{item.source.name}</span>
-        <Star style={starStyles} color='aliceblue' title="Add to favorite" />
+        {/* <StyledStar title="Add to favorite" /> */}
       </div>
       <div className="card-content">
         <p>{item.title}</p>

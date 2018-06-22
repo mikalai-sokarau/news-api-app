@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import SingleSide from "../../components/SingleSide";
 import { getNewsFrom } from "../../store/reducers";
 import { ASIDE_NEWS_SOURCES } from "../../common/constants";
+import Error from "./../../components/Error/index";
 
 class SideNews extends PureComponent {
   componentDidMount() {
@@ -17,7 +18,11 @@ class SideNews extends PureComponent {
   renderNewsArticles = () =>
     this.props.sideNews.map(item => <SingleSide key={item.url} item={item} />);
 
-  render = () => <div>{this.renderNewsArticles()}</div>;
+  render = () => (
+    <Error>
+      <div>{this.renderNewsArticles()}</div>
+    </Error>
+  );
 }
 
 export default connect(

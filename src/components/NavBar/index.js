@@ -9,12 +9,12 @@ const NavBar = () => (
             MY FEED
           </a>
         </div>
-        <div className="col s3">
+        {/* <div className="col s3">
           <label>
             <input type="checkbox" className="filled-in" />
             <span>Show favorite news</span>
           </label>
-        </div>
+        </div> */}
       </div>
     </nav>
   </div>

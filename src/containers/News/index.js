@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import NewSingle from "../../components/NewSingle";
 import { getNewsFrom } from "../../store/reducers";
 import { NEWS_SOURCES } from "../../common/constants";
+import Error from "./../../components/Error/index";
+
+const DEFAULT_NEWS = NEWS_SOURCES[0];
 
 class News extends PureComponent {
   componentDidMount() {
@@ -20,7 +23,7 @@ class News extends PureComponent {
       consumer: this.constructor.name,
       source:
         NEWS_SOURCES.find(item => item.shortName === this.props.source) ||
-        NEWS_SOURCES[0]
+        DEFAULT_NEWS
     };
 
     this.props.getNewsFrom(options);
@@ -31,7 +34,9 @@ class News extends PureComponent {
 
   render = () => (
     <div className="col s8">
-      <div className="row">{this.renderNews()}</div>
+      <Error>
+        <div className="row">{this.renderNews()}</div>
+      </Error>
     </div>
   );
 }

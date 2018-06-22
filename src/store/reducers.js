@@ -1,10 +1,10 @@
 import { createAction, handleActions } from "redux-actions";
 import { ACTIONS } from "../common/constants";
 
-export const addNewsToFavorite = createAction(ACTIONS.ADD_NEWS_TO_FAVORITE);
-export const removeNewsFromFavorite = createAction(ACTIONS.REMOVE_NEWS_FROM_FAVORITE);
-export const recievedNewsFrom = createAction(ACTIONS.RECEIVED_NEWS_FROM);
-export const getNewsFrom = createAction(ACTIONS.GET_NEWS_FROM);
+const addNewsToFavorite = createAction(ACTIONS.ADD_NEWS_TO_FAVORITE);
+const removeNewsFromFavorite = createAction(ACTIONS.REMOVE_NEWS_FROM_FAVORITE);
+const recievedNewsFrom = createAction(ACTIONS.RECEIVED_NEWS_FROM);
+const getNewsFrom = createAction(ACTIONS.GET_NEWS_FROM);
 
 const INITIAL_STATE = {
   news: [],
@@ -12,7 +12,8 @@ const INITIAL_STATE = {
   favoriteNews: []
 };
 
-const reducer = handleActions({
+const reducer = handleActions(
+  {
     [addNewsToFavorite](state, action) {
       const newFavoriteNewsItem = {
         data: action.payload.data,
@@ -43,11 +44,17 @@ const reducer = handleActions({
   INITIAL_STATE
 );
 
-function getNewsConsumer(state, {payload: {consumer}}) {
+function getNewsConsumer(state, { payload: { consumer } }) {
   const lowerCasedConsumer = consumer.toLowerCase();
   return Object.keys(state).find(
     key => key.toLowerCase() === lowerCasedConsumer
   );
 }
 
-export { reducer };
+export {
+  reducer,
+  addNewsToFavorite,
+  removeNewsFromFavorite,
+  getNewsFrom,
+  recievedNewsFrom
+};
