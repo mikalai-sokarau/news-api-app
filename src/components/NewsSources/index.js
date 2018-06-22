@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { NEWS_SOURCES } from "../../common/constants";
+import { PropTypes } from "prop-types";
 
 const DEFAULT_NEWS = NEWS_SOURCES[0];
 
@@ -25,5 +26,9 @@ function createLink(item, source) {
     </Link>
   );
 }
+
+NewsSources.propTypes = {
+  source: PropTypes.string
+};
 
 export default NewsSources;

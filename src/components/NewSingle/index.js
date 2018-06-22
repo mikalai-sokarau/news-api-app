@@ -1,6 +1,7 @@
 import React from "react";
-import Star from 'react-icons/lib/fa/star';
-import styled from 'styled-components';
+import Star from "react-icons/lib/fa/star";
+import styled from "styled-components";
+import { PropTypes } from "prop-types";
 
 const StyledStar = styled(Star)`
   position: absolute;
@@ -14,19 +15,25 @@ const StyledStar = styled(Star)`
 const NewSingle = ({ item }) => (
   <div className="col s4 hoverable">
     <div className="card small">
-      <div className="card-image" style={{ position: 'relative' }}>
+      <div className="card-image" style={{ position: "relative" }}>
         <img src={item.urlToImage} alt={item.title} />
         <span className="card-title">{item.source.name}</span>
-        {/* <StyledStar title="Add to favorite" /> */}
+        <StyledStar title="Add to favorite" />
       </div>
       <div className="card-content">
         <p>{item.title}</p>
       </div>
       <div className="card-action">
-        <a href={item.url} target="_blank">FULL ARTICLE</a>
+        <a href={item.url} target="_blank">
+          FULL ARTICLE
+        </a>
       </div>
     </div>
   </div>
 );
+
+NewSingle.propTypes = {
+  item: PropTypes.object
+};
 
 export default NewSingle;

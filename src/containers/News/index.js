@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import NewSingle from "../../components/NewSingle";
 import { getNewsFrom } from "../../store/reducers";
 import { NEWS_SOURCES } from "../../common/constants";
@@ -40,6 +41,12 @@ class News extends PureComponent {
     </div>
   );
 }
+
+News.propTypes = {
+  source: PropTypes.string,
+  news: PropTypes.arrayOf(PropTypes.object),
+  getNewsFrom: PropTypes.func
+};
 
 export default connect(
   store => ({ news: store.news }),

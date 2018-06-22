@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const SingleSide = ({ item }) => (
   <div>
@@ -10,5 +11,9 @@ const SingleSide = ({ item }) => (
     </a>
   </div>
 );
+
+SingleSide.propTypes = {
+  item: PropTypes.object
+};
 
 export default SingleSide;
