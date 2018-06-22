@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import NewSingle from "../../components/NewSingle";
-import { getNewsFrom } from "../../store/actionCreators";
+import { getNewsFrom } from "../../store/reducers";
 import { NEWS_SOURCES } from "../../common/constants";
 
 class News extends PureComponent {

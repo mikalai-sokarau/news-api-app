@@ -1,15 +1,15 @@
-import axios from 'axios';
+import axios from "axios";
 import { put, takeEvery, call } from "redux-saga/effects";
-import { ACTIONS, API_KEY } from '../common/constants';
-import { recievedNewsFrom } from "./actionCreators";
+import { ACTIONS, API_KEY } from "../common/constants";
+import { recievedNewsFrom } from "./reducers";
 
-function* getNewsFrom(action) {
-  const url = composeUrl(action.payload.source.type, action.payload.source.query);
+function* getNewsFrom({ payload: p }) {
+  const url = composeUrl(p.source.type, p.source.query);
   const news = yield call([axios, axios.get], url);
   const options = {
-    consumer: action.payload.consumer,
+    consumer: p.consumer,
     data: news.data
-  }
+  };
   yield put(recievedNewsFrom(options));
 }
 

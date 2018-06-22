@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import SingleSide from "../../components/SingleSide";
-import { getNewsFrom } from "../../store/actionCreators";
+import { getNewsFrom } from "../../store/reducers";
 import { ASIDE_NEWS_SOURCES } from "../../common/constants";
 
 class SideNews extends PureComponent {
