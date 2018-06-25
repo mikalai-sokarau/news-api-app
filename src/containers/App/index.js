@@ -13,7 +13,7 @@ const DEFAULT_PATH = NEWS_SOURCES[0].shortName;
 class App extends PureComponent {
   render = () => (
     <div className="container-fluid">
-      <NavBar />
+      <NavBar location={this.props.location}/>
       <Switch>
         <Route path="/favorite" component={FavoriteNews} />
         <Redirect path="/" exact to={`/${DEFAULT_PATH}`}></Redirect>
