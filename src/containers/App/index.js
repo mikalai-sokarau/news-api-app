@@ -1,11 +1,14 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { getNewsFrom } from "../../store/reducers";
 import News from "../../components/News";
 import SidePanel from "../../components/SidePanel";
 import NavBar from "../../components/NavBar";
 import FavoriteNews from "../../components/FavoriteNews";
+import { NEWS_SOURCES } from "../../common/constants";
+
+const DEFAULT_PATH = NEWS_SOURCES[0].shortName;
 
 class App extends PureComponent {
   render = () => (
@@ -13,6 +16,7 @@ class App extends PureComponent {
       <NavBar />
       <Switch>
         <Route path="/favorite" component={FavoriteNews} />
+        <Redirect path="/" exact to={`/${DEFAULT_PATH}`}></Redirect>
         <Route
           path="/:source?"
           render={({
