@@ -1,11 +1,15 @@
 import React from "react";
-import SideNews from "../../containers/SideNews";
+import SideNews from "../../components/SideNews";
 import NewsSources from "../NewsSources";
 
-const SidePanel = ({ source }) => (
+const SidePanel = props => (
   <div className="col s4">
-    <NewsSources source={source} />
-    <SideNews />
+    <NewsSources
+      source={props.source}
+      getNewsFrom={props.getNewsFrom}
+      news={props.news}
+    />
+    <SideNews getNewsFrom={props.getNewsFrom} sideNews={props.sideNews} />
   </div>
 );
 

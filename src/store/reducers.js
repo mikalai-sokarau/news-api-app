@@ -38,7 +38,8 @@ const reducer = handleActions(
     },
     [recievedNewsFrom](state, action) {
       const key = getNewsConsumer(state, action);
-      return Object.assign({}, state, { [key]: action.payload.data.articles });
+      const result = Object.assign({}, state, { [key]: action.payload.data.articles });
+      return result;
     }
   },
   INITIAL_STATE

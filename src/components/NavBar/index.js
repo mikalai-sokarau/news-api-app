@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => (
   <div className="navbar-fixed">
@@ -9,12 +10,14 @@ const NavBar = () => (
             MY FEED
           </a>
         </div>
-        {/* <div className="col s3">
-          <label>
-            <input type="checkbox" className="filled-in" />
-            <span>Show favorite news</span>
-          </label>
-        </div> */}
+        <div className="col s3">
+          <Link to="/favorite">
+            <label>
+              <input type="checkbox" className="filled-in" />
+              <span>Show favorite news</span>
+            </label>
+          </Link>
+        </div>
       </div>
     </nav>
   </div>

@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import "materialize-css/dist/css/materialize.min.css";
 import materialize from "materialize-css/dist/js/materialize";
-import { App } from "./components/App";
+import App from "./containers/App";
 import { reducer } from "./store/reducers";
 import { rootSaga } from "./store/sagas";
 

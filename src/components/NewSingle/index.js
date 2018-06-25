@@ -17,7 +17,7 @@ const NewSingle = ({ item }) => (
       <div className="card-image" style={{ position: 'relative' }}>
         <img src={item.urlToImage} alt={item.title} />
         <span className="card-title">{item.source.name}</span>
-        {/* <StyledStar title="Add to favorite" /> */}
+        <StyledStar title="Add to favorite" />
       </div>
       <div className="card-content">
         <p>{item.title}</p>

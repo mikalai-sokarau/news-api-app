@@ -1,23 +1,11 @@
 import React, { PureComponent } from "react";
-import { connect } from "react-redux";
 import NewSingle from "../../components/NewSingle";
-import { getNewsFrom } from "../../store/reducers";
 import { NEWS_SOURCES } from "../../common/constants";
 import Error from "./../../components/Error/index";
 
 const DEFAULT_NEWS = NEWS_SOURCES[0];
 
 class News extends PureComponent {
-  componentDidMount() {
-    this.getNews();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.source !== prevProps.source) {
-      this.getNews();
-    }
-  }
-
   getNews = () => {
     const options = {
       consumer: this.constructor.name,
@@ -28,7 +16,17 @@ class News extends PureComponent {
 
     this.props.getNewsFrom(options);
   };
+  
+  componentDidMount() {
+    this.getNews();
+  }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.source !== prevProps.source) {
+      this.getNews();
+    }
+  }
+  
   renderNews = () =>
     this.props.news.map(item => <NewSingle key={item.url} item={item} />);
 
@@ -41,7 +39,4 @@ class News extends PureComponent {
   );
 }
 
-export default connect(
-  store => ({ news: store.news }),
-  dispatch => ({ getNewsFrom: options => dispatch(getNewsFrom(options)) })
-)(News);
+export default News;
