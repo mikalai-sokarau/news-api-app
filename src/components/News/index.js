@@ -16,7 +16,7 @@ class News extends PureComponent {
 
     this.props.getNewsFrom(options);
   };
-  
+
   componentDidMount() {
     this.getNews();
   }
@@ -26,9 +26,18 @@ class News extends PureComponent {
       this.getNews();
     }
   }
-  
+
   renderNews = () =>
-    this.props.news.map(item => <NewSingle key={item.url} item={item} />);
+    this.props.news.map(item => (
+      <NewSingle
+        key={item.url}
+        item={item}
+        checked={this.props.favoriteNewsKeys[item.url]}
+        // favoriteNewsKeys={this.props.favoriteNewsKeys}
+        addNewsToFavorite={this.props.addNewsToFavorite}
+        removeNewsFromFavorite={this.props.removeNewsFromFavorite}
+      />
+    ));
 
   render = () => (
     <div className="col s8">

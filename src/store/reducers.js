@@ -9,7 +9,8 @@ const getNewsFrom = createAction(ACTIONS.GET_NEWS_FROM);
 const INITIAL_STATE = {
   news: [],
   sideNews: [],
-  favoriteNews: []
+  favoriteNews: [],
+  favoriteNewsKeys: {}
 };
 
 const reducer = handleActions(
@@ -20,26 +21,46 @@ const reducer = handleActions(
         id: action.payload.id
       };
 
-      return Object.assign({}, state, {
-        favoriteNews: [...state.favoriteNews, newFavoriteNewsItem]
-      });
+      return Object.assign(
+        {},
+        state,
+        {
+          favoriteNews: [...state.favoriteNews, newFavoriteNewsItem]
+        },
+        {
+          favoriteNewsKeys: {
+            ...state.favoriteNewsKeys,
+            [action.payload.id]: true
+          }
+        }
+      );
     },
     [removeNewsFromFavorite](state, action) {
       const filteredFavoriteNews = state.favoriteNews.filter(
-        item => item.id !== action.id
+        item => item.id !== action.payload.id
       );
+      const clonedFilteredFavoriteKeys = Object.assign(
+        {},
+        state.favoriteNewsKeys
+      );
+
+      delete clonedFilteredFavoriteKeys[action.payload.id];
 
       return Object.assign(
         { ...state },
         {
           favoriteNews: filteredFavoriteNews
+        },
+        {
+          favoriteNewsKeys: clonedFilteredFavoriteKeys
         }
       );
     },
     [recievedNewsFrom](state, action) {
-      const key = getNewsConsumer(state, action);
-      const result = Object.assign({}, state, { [key]: action.payload.data.articles });
-      return result;
+      const consumer = getNewsConsumer(state, action);
+      return Object.assign({}, state, {
+        [consumer]: action.payload.data.articles
+      });
     }
   },
   INITIAL_STATE
