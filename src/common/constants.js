@@ -10,21 +10,25 @@ const ACTIONS = {
 const NEWS_SOURCES = [
   {
     name: "CNN",
+    shortName: 'cnn',
     type: "top-headlines",
     query: "sources=cnn"
   },
   {
     name: "The New York Times",
+    shortName: 'thenewyourktimes',
     type: "top-headlines",
     query: "sources=the-new-york-times"
   },
   {
-    name: "Daily Mail",
+    name: "MTV News",
+    shortName: 'mtvnews',
     type: "top-headlines",
-    query: "sources=daily-mail"
+    query: "sources=mtv-news"
   },
   {
     name: "ESPN",
+    shortName: "espn",
     type: "top-headlines",
     query: "sources=espn"
   },

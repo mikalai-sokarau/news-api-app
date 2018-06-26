@@ -1,7 +1,23 @@
 import React from "react";
 
-export const Error = () => (
-  <div>
-    <h1>There is nothing interesting right now, try later!</h1>
-  </div>
-);
+class Error extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  componentDidCatch() {
+    this.setState({ hasError: true });
+  }
+
+  render = () =>
+    this.state.hasError ? (
+      <div>
+        <h2>Something went wrong!</h2>
+      </div>
+    ) : (
+      this.props.children
+    );
+}
+
+export default Error;

@@ -1,62 +1,25 @@
-import React, { Component, Fragment } from "react";
-import { connect } from 'react-redux';
-import { SingleSide } from "./SingleSide";
-import { Error } from "./../Error";
-import { getNewsFrom } from "../../store/actionCreators";
-import { NEWS_SOURCES, ASIDE_NEWS_SOURCES } from "../../common/constants";
+import React, { PureComponent } from "react";
+import SingleSide from "../../components/SingleSide";
+import { ASIDE_NEWS_SOURCES } from "../../common/constants";
+import Error from "./../../components/Error/index";
 
-class SideNews extends Component {
-  state = {
-    error: false,
-    activeNews: ASIDE_NEWS_SOURCES
-  };
-
+class SideNews extends PureComponent {
   componentDidMount() {
     const options = {
       consumer: this.constructor.name,
-      source: this.state.activeNews
-    }
+      source: ASIDE_NEWS_SOURCES
+    };
     this.props.getNewsFrom(options);
   }
 
-  renderNewsArticles() {
-    return !this.state.error ? (
-      this.props.sideNews.map(item => <SingleSide key={item.url} item={item} />)
-    ) : (
-        <Error />
-      );
-  }
+  renderNewsArticles = () =>
+    this.props.sideNews.map(item => <SingleSide key={item.url} item={item} />);
 
-  renderNewsSources() {
-    return NEWS_SOURCES.map(item => (
-      <a
-        href="#!"
-        key={item.name}
-        className="collection-item"
-        // onClick={this.props.getNewsFrom}
-      >{item.name}</a>)
-    );
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <div className="collection">{this.renderNewsSources()}</div>
-        <div className="row">{this.renderNewsArticles()}</div>
-      </Fragment>
-    );
-  }
+  render = () => (
+    <Error>
+      <div>{this.renderNewsArticles()}</div>
+    </Error>
+  );
 }
 
-const mapStateToProps = store => ({
-  sideNews: store.sideNews
-});
-
-const mapDispatchToProps = dispatch => ({
-  getNewsFrom: options => dispatch(getNewsFrom(options))
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SideNews);
+export default SideNews;

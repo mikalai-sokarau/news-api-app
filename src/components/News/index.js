@@ -1,46 +1,50 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { NewSingle } from "./NewSingle";
-import { Error } from "./../Error";
-import { getNewsFrom } from "../../store/actionCreators";
+import React, { PureComponent } from "react";
+import NewSingle from "../../components/NewSingle";
 import { NEWS_SOURCES } from "../../common/constants";
+import Error from "./../../components/Error/index";
 
-class News extends Component {
-  state = {
-    error: false,
-    activeNews: NEWS_SOURCES[3]
+const DEFAULT_NEWS = NEWS_SOURCES[0];
+
+class News extends PureComponent {
+  getNews = () => {
+    const options = {
+      consumer: this.constructor.name,
+      source:
+        NEWS_SOURCES.find(item => item.shortName === this.props.source) ||
+        DEFAULT_NEWS
+    };
+
+    this.props.getNewsFrom(options);
   };
 
   componentDidMount() {
-    const options = {
-      consumer: this.constructor.name,
-      source: this.state.activeNews
+    this.getNews();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.source !== prevProps.source) {
+      this.getNews();
     }
-    this.props.getNewsFrom(options);
   }
 
-  renderNews() {
-    return !this.state.error ? (
-      this.props.news.map(item => <NewSingle key={item.url} item={item} />)
-    ) : (
-        <Error />
-      );
-  }
+  renderNews = () =>
+    this.props.news.map(item => (
+      <NewSingle
+        key={item.url}
+        item={item}
+        checked={this.props.favoriteNewsKeys[item.url]}
+        addNewsToFavorite={this.props.addNewsToFavorite}
+        removeNewsFromFavorite={this.props.removeNewsFromFavorite}
+      />
+    ));
 
-  render() {
-    return <div className="row">{this.renderNews()}</div>;
-  }
+  render = () => (
+    <div className="col s8">
+      <Error>
+        <div>{this.renderNews()}</div>
+      </Error>
+    </div>
+  );
 }
 
-const mapStateToProps = store => ({
-  news: store.news
-});
-
-const mapDispatchToProps = dispatch => ({
-  getNewsFrom: options => dispatch(getNewsFrom(options)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(News);
+export default News;
