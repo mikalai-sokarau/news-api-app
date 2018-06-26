@@ -17,6 +17,7 @@ const StyledStar = styled(Star)`
   opacity: 0.8;
   color: ${props => props.theme.color};
   transition-duration: 0.3s;
+  transition-timing-function: ease-out;
   transition-delay: 0.15s;
 
   :hover {
