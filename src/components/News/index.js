@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import NewSingle from "../../components/NewSingle";
+import NewSingle from "../../components/SingleNews";
 import { NEWS_SOURCES } from "../../common/constants";
 import Error from "./../../components/Error/index";
 

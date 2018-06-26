@@ -1,5 +1,5 @@
 import React from "react";
-import NewSingle from "../../components/NewSingle";
+import NewSingle from "../../components/SingleNews";
 import StyledMessage from "./style";
 
 const FavoriteNews = props => {

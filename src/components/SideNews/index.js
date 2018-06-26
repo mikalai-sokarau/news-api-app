@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import SingleSide from "../../components/SingleSide";
+import SingleSide from "../../components/SingleSideNews";
 import { ASIDE_NEWS_SOURCES } from "../../common/constants";
 import Error from "./../../components/Error/index";
 

@@ -11,7 +11,6 @@ const StyledMessage = styled.div`
   span {
     font-size: 1.3rem;
     margin-right: 10px;
-    font-family: KaushanScript;
   }
 `;
 
