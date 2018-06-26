@@ -10,16 +10,14 @@ class Error extends React.Component {
     this.setState({ hasError: true });
   }
 
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div>
-          <h2>Something went wrong!</h2>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
+  render = () =>
+    this.state.hasError ? (
+      <div>
+        <h2>Something went wrong!</h2>
+      </div>
+    ) : (
+      this.props.children
+    );
 }
 
 export default Error;
