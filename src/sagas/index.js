@@ -1,7 +1,7 @@
 import axios from "axios";
 import { put, takeEvery, call } from "redux-saga/effects";
 import { ACTIONS, API_KEY } from "../common/constants";
-import { recievedNewsFrom } from "./reducers";
+import { recievedNewsFrom } from "../reducers";
 
 function* getNewsFrom({ payload: p }) {
   const url = composeUrl(p.source.type, p.source.query);
@@ -22,3 +22,4 @@ function* rootSaga() {
 }
 
 export { rootSaga };
+

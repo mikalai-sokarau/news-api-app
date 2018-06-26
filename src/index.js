@@ -7,8 +7,8 @@ import createSagaMiddleware from "redux-saga";
 import "materialize-css/dist/css/materialize.min.css";
 import materialize from "materialize-css/dist/js/materialize";
 import App from "./containers/App";
-import { reducer } from "./store/reducers";
-import { rootSaga } from "./store/sagas";
+import { reducer } from "./reducers";
+import { rootSaga } from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));

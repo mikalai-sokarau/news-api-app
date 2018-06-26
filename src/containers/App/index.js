@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
-import * as newsActions from "../../store/reducers";
+import * as newsActions from "../../reducers/index";
 import News from "../../components/News";
 import SidePanel from "../../components/SidePanel";
 import NavBar from "../../components/NavBar";
@@ -55,18 +55,22 @@ class App extends PureComponent {
   );
 }
 
+const mapStateToProps = store => ({
+  news: store.news,
+  sideNews: store.sideNews,
+  favoriteNews: store.favoriteNews,
+  favoriteNewsKeys: store.favoriteNewsKeys
+});
+
+const mapDispatchToProps = dispatch => ({
+  getNewsFrom: options => dispatch(newsActions.getNewsFrom(options)),
+  addNewsToFavorite: options =>
+    dispatch(newsActions.addNewsToFavorite(options)),
+  removeNewsFromFavorite: options =>
+    dispatch(newsActions.removeNewsFromFavorite(options))
+});
+
 export default connect(
-  store => ({
-    news: store.news,
-    sideNews: store.sideNews,
-    favoriteNews: store.favoriteNews,
-    favoriteNewsKeys: store.favoriteNewsKeys
-  }),
-  dispatch => ({
-    getNewsFrom: options => dispatch(newsActions.getNewsFrom(options)),
-    addNewsToFavorite: options =>
-      dispatch(newsActions.addNewsToFavorite(options)),
-    removeNewsFromFavorite: options =>
-      dispatch(newsActions.removeNewsFromFavorite(options))
-  })
+  mapStateToProps,
+  mapDispatchToProps
 )(App);
