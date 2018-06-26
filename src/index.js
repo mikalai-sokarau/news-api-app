@@ -5,7 +5,6 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import "materialize-css/dist/css/materialize.min.css";
-import materialize from "materialize-css/dist/js/materialize";
 import App from "./containers/App";
 import { reducer } from "./reducers";
 import { rootSaga } from "./sagas";
@@ -22,5 +21,3 @@ render(
   </Provider>,
   document.getElementById("root")
 );
-
-materialize.AutoInit();
