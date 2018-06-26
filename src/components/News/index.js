@@ -33,7 +33,6 @@ class News extends PureComponent {
         key={item.url}
         item={item}
         checked={this.props.favoriteNewsKeys[item.url]}
-        // favoriteNewsKeys={this.props.favoriteNewsKeys}
         addNewsToFavorite={this.props.addNewsToFavorite}
         removeNewsFromFavorite={this.props.removeNewsFromFavorite}
       />
@@ -42,7 +41,7 @@ class News extends PureComponent {
   render = () => (
     <div className="col s8">
       <Error>
-        <div className="row">{this.renderNews()}</div>
+        <div>{this.renderNews()}</div>
       </Error>
     </div>
   );

@@ -1,30 +1,6 @@
 import React from "react";
-import Star from "react-icons/lib/fa/star";
-import styled, { ThemeProvider } from "styled-components";
-
-const favorite = {
-  color: "gold"
-};
-
-const standart = {
-  color: "aliceblue"
-};
-
-const StyledStar = styled(Star)`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.8rem;
-  opacity: 0.6;
-  color: ${props => props.theme.color};
-
-  :hover {
-    color: ${props =>
-      props.theme.color === favorite.color ? standart.color : favorite.color};
-    opacity: 0.8;
-    cursor: pointer;
-  }
-`;
+import { ThemeProvider } from "styled-components";
+import { standart, favorite, StyledStar } from "./style";
 
 const NewSingle = props => {
   const isStarCkecked = props.checked;
