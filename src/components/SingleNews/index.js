@@ -17,7 +17,6 @@ const NewSingle = props => {
           <span className="card-title">{props.item.source.name}</span>
           <ThemeProvider theme={providerTheme}>
             <StyledStar
-              title="Add to favorite"
               onClick={() => {
                 clickHandler({
                   data: props.item,
