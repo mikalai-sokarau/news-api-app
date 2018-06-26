@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import NewSingle from "../../components/NewSingle";
 import StyledMessage from "./style";
 
@@ -17,9 +16,9 @@ const FavoriteNews = props => {
   const emptyFavoriteNewsMessage = (
     <StyledMessage>
       <span>There is no favorite news yet. First add a few from</span>
-      <Link to="/" className="waves-effect waves-light btn-small">
+      <a onClick={() => props.history.goBack()} className="waves-effect waves-light btn-small">
         Home
-      </Link>
+      </a>
     </StyledMessage>
   );
 

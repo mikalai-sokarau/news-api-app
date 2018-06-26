@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 
 const NavBar = props => {
   const buttonText =
-    props.location.pathname === "/favorite" ? "Home" : "Favorite news";
-  const buttonLink =
-    props.location.pathname === "/favorite" ? "/" : "/favorite";
-  
+    props.location.pathname === "/favorite" ? "BACK" : "Favorite news";
+  const clickHandler = () => {
+    return props.location.pathname === "/favorite"
+      ? () => props.history.goBack()
+      : () => props.history.push("/favorite");
+  };
+
   return (
     <div className="navbar-fixed">
       <nav>
@@ -17,12 +20,12 @@ const NavBar = props => {
             </Link>
           </div>
           <div className="col s2">
-            <Link
-              to={buttonLink}
+            <a
+              onClick={clickHandler()}
               className="waves-effect waves-light btn-small"
             >
               {buttonText}
-            </Link>
+            </a>
           </div>
         </div>
       </nav>
