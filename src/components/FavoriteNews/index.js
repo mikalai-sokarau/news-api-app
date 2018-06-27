@@ -15,7 +15,7 @@ const FavoriteNews = props => {
 
   const emptyFavoriteNewsMessage = (
     <StyledMessage>
-      <span>There is no favorite news yet. First add a few from</span>
+      <span>There are no favorite news yet. First add a few from</span>
       <a onClick={() => props.history.goBack()} className="waves-effect waves-light btn-small">
         Home
       </a>
