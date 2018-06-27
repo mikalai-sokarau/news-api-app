@@ -8,7 +8,7 @@ const DEFAULT_NEWS = NEWS_SOURCES[0];
 class News extends PureComponent {
   getNews = () => {
     const options = {
-      consumer: this.constructor.name.toLowerCase(),
+      consumer: 'news',
       source:
         NEWS_SOURCES.find(item => item.shortName === this.props.source) ||
         DEFAULT_NEWS

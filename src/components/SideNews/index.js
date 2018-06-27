@@ -6,7 +6,7 @@ import Error from "./../../components/Error/index";
 class SideNews extends PureComponent {
   componentDidMount() {
     const options = {
-      consumer: this.constructor.name.toLowerCase(),
+      consumer: 'sideNews',
       source: ASIDE_NEWS_SOURCES
     };
     this.props.getNewsFrom(options);
