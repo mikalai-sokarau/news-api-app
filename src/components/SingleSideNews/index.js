@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const SingleSide = ({ item: {url, title} }) => (
+const SingleSide = ({ item: { url, title } }) => (
   <div>
     <div className="divider" />
     <a href={url} target="_blank">
