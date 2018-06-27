@@ -2,13 +2,13 @@ import React from "react";
 import NewSingle from "../../components/SingleNews";
 import StyledMessage from "./style";
 
-const FavoriteNews = props => {
+const FavoriteNews = ({ news, removeNewsFromFavorite, history }) => {
   const renderNews = () =>
-    props.news.map(item => (
+    news.map(item => (
       <NewSingle
         key={item.data.url}
         item={item.data}
-        removeNewsFromFavorite={props.removeNewsFromFavorite}
+        removeNewsFromFavorite={removeNewsFromFavorite}
         checked
       />
     ));
@@ -16,7 +16,10 @@ const FavoriteNews = props => {
   const emptyFavoriteNewsMessage = (
     <StyledMessage>
       <span>There are no favorite news yet. First add a few from</span>
-      <a onClick={() => props.history.goBack()} className="waves-effect waves-light btn-small">
+      <a
+        onClick={() => history.goBack()}
+        className="waves-effect waves-light btn-small"
+      >
         Home
       </a>
     </StyledMessage>
@@ -24,7 +27,7 @@ const FavoriteNews = props => {
 
   return (
     <div className="row">
-      {props.news.length ? renderNews() : emptyFavoriteNewsMessage}
+      {news.length ? renderNews() : emptyFavoriteNewsMessage}
     </div>
   );
 };

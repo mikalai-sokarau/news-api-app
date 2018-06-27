@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { StyledDiv, StyledContainer } from "./style";
 
-const NavBar = props => {
+const NavBar = ({ history, location }) => {
   const buttonText =
-    props.location.pathname === "/favorite" ? "BACK" : "Favorite news";
+    location.pathname === "/favorite" ? "BACK" : "Favorite news";
   const clickHandler = () => {
-    return props.location.pathname === "/favorite"
-      ? () => props.history.goBack()
-      : () => props.history.push("/favorite");
+    return location.pathname === "/favorite"
+      ? () => history.goBack()
+      : () => history.push("/favorite");
   };
 
   return (
