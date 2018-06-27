@@ -15,63 +15,25 @@ const INITIAL_STATE = {
 
 const reducer = handleActions(
   {
-    [addNewsToFavorite](state, action) {
-      const newFavoriteNewsItem = {
-        data: action.payload.data,
-        id: action.payload.id
-      };
+    [addNewsToFavorite]: (state, { payload: { data, id } }) => ({
+      ...state,
+      favoriteNews: [...state.favoriteNews, { data, id }],
+      favoriteNewsKeys: { ...state.favoriteNewsKeys, [id]: true }
+    }),
 
-      return Object.assign(
-        {},
-        state,
-        {
-          favoriteNews: [...state.favoriteNews, newFavoriteNewsItem]
-        },
-        {
-          favoriteNewsKeys: {
-            ...state.favoriteNewsKeys,
-            [action.payload.id]: true
-          }
-        }
-      );
-    },
-    [removeNewsFromFavorite](state, action) {
-      const filteredFavoriteNews = state.favoriteNews.filter(
-        item => item.id !== action.payload.id
-      );
-      const clonedFilteredFavoriteKeys = Object.assign(
-        {},
-        state.favoriteNewsKeys
-      );
+    [removeNewsFromFavorite]: (state, { payload: { id } }) => ({
+      ...state,
+      favoriteNews: state.favoriteNews.filter(item => item.id !== id),
+      favoriteNewsKeys: Object.keys(state.favoriteNews).filter(key => key !== id)
+    }),
 
-      delete clonedFilteredFavoriteKeys[action.payload.id];
-
-      return Object.assign(
-        { ...state },
-        {
-          favoriteNews: filteredFavoriteNews
-        },
-        {
-          favoriteNewsKeys: clonedFilteredFavoriteKeys
-        }
-      );
-    },
-    [recievedNewsFrom](state, action) {
-      const consumer = getNewsConsumer(state, action);
-      return Object.assign({}, state, {
-        [consumer]: action.payload.data.articles
-      });
-    }
+    [recievedNewsFrom]: (state, { payload: { consumer, data: { articles } } }) => ({
+      ...state, 
+      [consumer]: articles
+    })
   },
   INITIAL_STATE
 );
-
-function getNewsConsumer(state, { payload: { consumer } }) {
-  const lowerCasedConsumer = consumer.toLowerCase();
-  return Object.keys(state).find(
-    key => key.toLowerCase() === lowerCasedConsumer
-  );
-}
 
 export {
   reducer,
