@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SingleNews from '../../components/SingleNews';
 import { NEWS_SOURCES } from '../../common/constants';
-import * as newsActions from '../../reducers/index';
+import { getNewsFrom, addNewsToFavorite, removeNewsFromFavorite } from '../../reducers/index';
 import Error from '../Error';
 
 const DEFAULT_NEWS = NEWS_SOURCES[0];
@@ -47,12 +47,12 @@ class News extends Component {
   );
 }
 
-const mapStateToProps = store => ({ ...store });
+const mapStateToProps = ({ news, favoriteNewsKeys }) => ({ news, favoriteNewsKeys });
 
 const mapDispatchToProps = dispatch => ({
-  getNewsFrom: options => dispatch(newsActions.getNewsFrom(options)),
-  addNewsToFavorite: options => dispatch(newsActions.addNewsToFavorite(options)),
-  removeNewsFromFavorite: options => dispatch(newsActions.removeNewsFromFavorite(options))
+  getNewsFrom: options => dispatch(getNewsFrom(options)),
+  addNewsToFavorite: options => dispatch(addNewsToFavorite(options)),
+  removeNewsFromFavorite: options => dispatch(removeNewsFromFavorite(options))
 });
 
 export default connect(

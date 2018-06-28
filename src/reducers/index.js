@@ -35,10 +35,4 @@ const reducer = handleActions(
   INITIAL_STATE
 );
 
-export {
-  reducer,
-  addNewsToFavorite,
-  removeNewsFromFavorite,
-  getNewsFrom,
-  recievedNewsFrom
-};
+export { reducer, addNewsToFavorite, removeNewsFromFavorite, getNewsFrom, recievedNewsFrom };

@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { standart, favorite, StyledStar } from './style';
 
-const NewSingle = ({ item, checked, removeNewsFromFavorite, addNewsToFavorite }) => (
+const SingleNews = ({ item, checked, removeNewsFromFavorite, addNewsToFavorite }) => (
   <div className="col s4 hoverable">
     <div className="card small">
       <div className="card-image" style={{ position: 'relative' }}>
@@ -26,4 +26,4 @@ const NewSingle = ({ item, checked, removeNewsFromFavorite, addNewsToFavorite })
   </div>
 );
 
-export default NewSingle;
+export default SingleNews;

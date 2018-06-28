@@ -5,7 +5,7 @@ import News from '../News';
 import SidePanel from '../SidePanel';
 import NavBar from '../../components/NavBar';
 import FavoriteNews from '../../components/FavoriteNews';
-import { removeNewsFromFavorite} from '../../reducers/index';
+import { removeNewsFromFavorite } from '../../reducers/index';
 import { NEWS_SOURCES } from '../../common/constants';
 
 const DEFAULT_PATH = NEWS_SOURCES[0].shortName;
