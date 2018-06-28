@@ -16,7 +16,7 @@ sagaMiddleware.run(rootSaga);
 render(
   <Provider store={store}>
     <BrowserRouter>
-      <Route path="/:category" component={App} />  
+      <Route component={App} />  
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

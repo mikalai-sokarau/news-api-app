@@ -1,23 +1,50 @@
-import React from 'react';
-import NewSingle from '../../components/SingleNews';
-import Error from './../../components/Error/index';
+import React, { PureComponent } from "react";
+import SingleNews from "../../components/SingleNews";
+import { NEWS_SOURCES } from "../../common/constants";
+import Error from "./../../components/Error/index";
 
-const News = ({ news, favoriteNewsKeys, addNewsToFavorite, removeNewsFromFavorite }) => (
-  <div className="col s8">
-    <Error>
-      <div>
-        {news.map(item => (
-          <NewSingle
-            key={item.url}
-            item={item}
-            checked={favoriteNewsKeys[item.url]}
-            addNewsToFavorite={addNewsToFavorite}
-            removeNewsFromFavorite={removeNewsFromFavorite}
-          />
-        ))}
-      </div>
-    </Error>
-  </div>
-);
+const DEFAULT_NEWS = NEWS_SOURCES[0];
+
+class News extends PureComponent {
+  getNews = () => {
+    const options = {
+      consumer: 'news',
+      source:
+        NEWS_SOURCES.find(item => item.shortName === this.props.source) ||
+        DEFAULT_NEWS
+    };
+
+    this.props.getNewsFrom(options);
+  };
+
+  componentDidMount() {
+    this.getNews();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.source !== prevProps.source) {
+      this.getNews();
+    }
+  }
+
+  renderNews = () =>
+    this.props.news.map(item => (
+      <SingleNews
+        key={item.url}
+        item={item}
+        checked={this.props.favoriteNewsKeys[item.url]}
+        addNewsToFavorite={this.props.addNewsToFavorite}
+        removeNewsFromFavorite={this.props.removeNewsFromFavorite}
+      />
+    ));
+
+  render = () => (
+    <div className="col s8">
+      <Error>
+        <div>{this.renderNews()}</div>
+      </Error>
+    </div>
+  );
+}
 
 export default News;
