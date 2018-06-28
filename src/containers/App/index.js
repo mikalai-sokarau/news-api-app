@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import * as newsActions from '../../reducers/index';
-import News from '../../components/News';
+import News from '../News';
 import SidePanel from '../../components/SidePanel';
 import NavBar from '../../components/NavBar';
 import FavoriteNews from '../../components/FavoriteNews';

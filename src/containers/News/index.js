@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import SingleNews from "../../components/SingleNews";
 import { NEWS_SOURCES } from "../../common/constants";
-import Error from "./../../components/Error/index";
+import Error from "../Error";
 
 const DEFAULT_NEWS = NEWS_SOURCES[0];
 

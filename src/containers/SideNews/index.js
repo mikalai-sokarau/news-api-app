@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import SingleSideNews from "../../components/SingleSideNews";
 import { ASIDE_NEWS_SOURCES } from "../../common/constants";
-import Error from "./../../components/Error/index";
+import Error from "../Error";
 
 class SideNews extends PureComponent {
   componentDidMount() {
