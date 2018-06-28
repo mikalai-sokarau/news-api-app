@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SingleSide = ({ item: { url, title } }) => (
+const SingleSideNews = ({ item: { url, title } }) => (
   <div>
     <div className="divider" />
     <a href={url} target="_blank">
@@ -11,4 +11,4 @@ const SingleSide = ({ item: { url, title } }) => (
   </div>
 );
 
-export default SingleSide;
+export default SingleSideNews;
