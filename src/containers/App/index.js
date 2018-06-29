@@ -1,73 +1,54 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { Route, Switch, Redirect } from "react-router-dom";
-import * as newsActions from "../../reducers/index";
-import News from "../../components/News";
-import SidePanel from "../../components/SidePanel";
-import NavBar from "../../components/NavBar";
-import FavoriteNews from "../../components/FavoriteNews";
-import { NEWS_SOURCES } from "../../common/constants";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import News from '../News';
+import SidePanel from '../SidePanel';
+import NavBar from '../../components/NavBar';
+import FavoriteNews from '../../components/FavoriteNews';
+import { removeNewsFromFavorite } from '../../reducers/index';
+import { NEWS_SOURCES } from '../../common/constants';
 
 const DEFAULT_PATH = NEWS_SOURCES[0].shortName;
 
-class App extends PureComponent {
-  render = () => (
-    <div className="container-fluid">
-      <NavBar location={this.props.location} history={this.props.history} />
-      <Switch>
-        <Redirect path="/" exact to={`/${DEFAULT_PATH}`} />
-        <Route
-          path="/favorite"
-          render={() => (
-            <FavoriteNews
-              history={this.props.history}
-              news={this.props.favoriteNews}
-              removeNewsFromFavorite={this.props.removeNewsFromFavorite}
-            />
-          )}
-        />
-        <Route
-          path="/:source?"
-          render={({
-            match: {
-              params: { source }
-            }
-          }) => (
-            <div className="row">
-              <News
-                getNewsFrom={this.props.getNewsFrom}
-                source={source}
-                news={this.props.news}
-                favoriteNewsKeys={this.props.favoriteNewsKeys}
-                addNewsToFavorite={this.props.addNewsToFavorite}
-                removeNewsFromFavorite={this.props.removeNewsFromFavorite}
-              />
-              <SidePanel
-                getNewsFrom={this.props.getNewsFrom}
-                source={source}
-                sideNews={this.props.sideNews}
-              />
-            </div>
-          )}
-        />
-      </Switch>
-    </div>
-  );
-}
+const App = ({ location: { pathname }, history, favoriteNews, removeNewsFromFavorite }) => (
+  <div className="container-fluid">
+    <NavBar
+      buttonName={pathname === '/favorite' ? 'back' : 'favorite news'}
+      clickHandler={
+        pathname === '/favorite' ? history.goBack : () => history.push('/favorite')
+      }
+    />
+    <Switch>
+      <Redirect path="/" exact to={`/${DEFAULT_PATH}`} />
+      <Route
+        path="/favorite"
+        render={() => (
+          <FavoriteNews
+            news={favoriteNews}
+            buttonName={'Home'}
+            messageText={'There are no favorite news yet. First add a few from'}
+            buttonClickHandler={history.goBack}
+            iconClickHandler={removeNewsFromFavorite}
+          />
+        )}
+      />
+      <Route
+        path="/:source"
+        render={({ match: { params: { source } } }) => (
+          <div className="row">
+            <News source={source} />
+            <SidePanel source={source} />
+          </div>
+        )}
+      />
+    </Switch>
+  </div>
+);
 
-const mapStateToProps = store => ({
-  news: store.news,
-  sideNews: store.sideNews,
-  favoriteNews: store.favoriteNews,
-  favoriteNewsKeys: store.favoriteNewsKeys
-});
+const mapStateToProps = ({favoriteNews}) => ({ favoriteNews });
 
 const mapDispatchToProps = dispatch => ({
-  getNewsFrom: options => dispatch(newsActions.getNewsFrom(options)),
-  addNewsToFavorite: options =>
-    dispatch(newsActions.addNewsToFavorite(options)),
-  removeNewsFromFavorite: options =>
-    dispatch(newsActions.removeNewsFromFavorite(options))
+  removeNewsFromFavorite: options => dispatch(removeNewsFromFavorite(options))
 });
 
 export default connect(

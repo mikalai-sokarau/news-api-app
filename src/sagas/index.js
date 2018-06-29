@@ -3,11 +3,11 @@ import { put, takeEvery, call } from "redux-saga/effects";
 import { ACTIONS, API_KEY } from "../common/constants";
 import { recievedNewsFrom } from "../reducers";
 
-function* getNewsFrom({ payload: p }) {
-  const url = composeUrl(p.source.type, p.source.query);
+function* getNewsFrom({ payload: { source: { type, query }, consumer } }) {
+  const url = composeUrl(type, query);
   const news = yield call([axios, axios.get], url);
   const options = {
-    consumer: p.consumer,
+    consumer,
     data: news.data
   };
   yield put(recievedNewsFrom(options));
@@ -22,4 +22,3 @@ function* rootSaga() {
 }
 
 export { rootSaga };
-

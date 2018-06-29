@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-const SingleSide = ({ item }) => (
+const SingleSideNews = ({ item: { url, title } }) => (
   <div>
     <div className="divider" />
-    <a href={item.url} target="_blank">
+    <a href={url} target="_blank">
       <div className="section">
-        <h6>{item.title}</h6>
+        <h6>{title}</h6>
       </div>
     </a>
   </div>
 );
 
-export default SingleSide;
+export default SingleSideNews;

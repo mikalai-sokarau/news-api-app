@@ -1,10 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 
-class Error extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
+class Error extends Component {
+  state = { hasError: false };
 
   componentDidCatch() {
     this.setState({ hasError: true });

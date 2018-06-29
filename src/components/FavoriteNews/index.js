@@ -1,32 +1,32 @@
-import React from "react";
-import NewSingle from "../../components/SingleNews";
-import StyledMessage from "./style";
+import React from 'react';
+import NewSingle from '../../components/SingleNews';
+import Message from '../Message';
 
-const FavoriteNews = props => {
-  const renderNews = () =>
-    props.news.map(item => (
-      <NewSingle
-        key={item.data.url}
-        item={item.data}
-        removeNewsFromFavorite={props.removeNewsFromFavorite}
-        checked
+const FavoriteNews = ({
+  news,
+  buttonName,
+  messageText,
+  iconClickHandler,
+  buttonClickHandler
+}) => (
+  <div className="row">
+    {news.length ? (
+      news.map(item => (
+        <NewSingle
+          key={item.data.url}
+          item={item.data}
+          removeNewsFromFavorite={iconClickHandler}
+          checked
+        />
+      ))
+    ) : (
+      <Message
+        text={messageText}
+        buttonClickHandler={buttonClickHandler}
+        buttonName={buttonName}
       />
-    ));
-
-  const emptyFavoriteNewsMessage = (
-    <StyledMessage>
-      <span>There is no favorite news yet. First add a few from</span>
-      <a onClick={() => props.history.goBack()} className="waves-effect waves-light btn-small">
-        Home
-      </a>
-    </StyledMessage>
-  );
-
-  return (
-    <div className="row">
-      {props.news.length ? renderNews() : emptyFavoriteNewsMessage}
-    </div>
-  );
-};
+    )}
+  </div>
+);
 
 export default FavoriteNews;
