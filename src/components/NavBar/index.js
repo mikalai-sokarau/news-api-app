@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { StyledDiv, StyledContainer } from './style';
+import Button from '../Button';
 
 const NavBar = ({ clickHandler, buttonName }) => (
   <div className="navbar-fixed">
     <nav>
       <StyledContainer className="indigo lighten-4 row">
         <div className="col s10">
-          <Link to="/" className="bran-logof-center">MY FEED</Link>
+          <Link to="/" className="bran-logof-center">
+            MY FEED
+          </Link>
         </div>
         <StyledDiv className="col s2">
-          <a onClick={clickHandler} className="waves-effect waves-light btn-small">
-            {buttonName}
-          </a>
+          <Button clickHandler={clickHandler} buttonName={buttonName} />
         </StyledDiv>
       </StyledContainer>
     </nav>
