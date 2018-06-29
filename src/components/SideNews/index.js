@@ -1,6 +1,6 @@
 import React from 'react';
 import SingleSideNews from '../SingleSideNews';
-import Error from '../../containers/Error';
+import Error from '../Error';
 
 const SideNews = ({ sideNews }) => (
   <Error>
