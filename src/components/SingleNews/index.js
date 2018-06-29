@@ -1,11 +1,11 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { standart, favorite, StyledStar } from './style';
+import { standart, favorite, StyledStar, StyledContainer } from './style';
 
 const SingleNews = ({ item, checked, removeNewsFromFavorite, addNewsToFavorite }) => (
   <div className="col s4 hoverable">
     <div className="card small">
-      <div className="card-image" style={{ position: 'relative' }}>
+      <StyledContainer className="card-image" >
         <img src={item.urlToImage} alt={item.title} />
         <span className="card-title">{item.source.name}</span>
         <ThemeProvider theme={checked ? favorite : standart}>
@@ -15,7 +15,7 @@ const SingleNews = ({ item, checked, removeNewsFromFavorite, addNewsToFavorite }
             }
           />
         </ThemeProvider>
-      </div>
+      </StyledContainer>
       <div className="card-content">
         <p>{item.title}</p>
       </div>

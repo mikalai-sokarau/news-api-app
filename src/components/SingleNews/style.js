@@ -1,12 +1,16 @@
-import Star from "react-icons/lib/fa/star";
-import styled from "styled-components";
+import Star from 'react-icons/lib/fa/star';
+import styled from 'styled-components';
+
+const StyledContainer = styled.div`
+  position: 'relative';
+`;
 
 const favorite = {
-  color: "gold"
+  color: 'gold'
 };
 
 const standart = {
-  color: "aliceblue"
+  color: 'aliceblue'
 };
 
 const StyledStar = styled(Star)`
@@ -26,4 +30,4 @@ const StyledStar = styled(Star)`
   }
 `;
 
-export { favorite, standart, StyledStar };
+export { favorite, standart, StyledStar, StyledContainer };
