@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose, withProps } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-import { LoadingElement, ContainerElement, MapElement } from './style';
+import { LoadingElement, ContainerElement } from './style';
 
 const GOOGLE_MAPS_API_KEY = 'AIzaSyB0kC8f2dmqytd6B9_6dg_Ozr1QZUCuDfc';
 const link = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`;
