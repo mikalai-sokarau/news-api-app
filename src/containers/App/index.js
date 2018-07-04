@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Map from '../Map';
 import News from '../News';
+import Images from '../Images';
 import SidePanel from '../SidePanel';
 import NavBar from '../../components/NavBar';
 import FavoriteNews from '../../components/FavoriteNews';
@@ -35,6 +36,7 @@ const App = ({ location: { pathname }, history, favoriteNews, removeNewsFromFavo
         )}
       />
       <Route path="/map" component={Map} />
+      <Route path="/images" component={Images} />
       <Route
         path="/:source"
         render={({ match: { params: { source } } }) => (
