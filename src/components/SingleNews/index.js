@@ -3,8 +3,8 @@ import { ThemeProvider } from 'styled-components';
 import { standart, favorite, StyledStar, StyledContainer } from './style';
 
 const SingleNews = ({ item, checked, removeNewsFromFavorite, addNewsToFavorite }) => (
-  <div className="col s4 hoverable">
-    <div className="card small">
+  <div className="col s4">
+    <div className="card small hoverable">
       <StyledContainer className="card-image" >
         <img src={item.urlToImage} alt={item.title} />
         <span className="card-title">{item.source.name}</span>

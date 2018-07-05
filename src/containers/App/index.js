@@ -1,17 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import Map from '../Map';
 import News from '../News';
+import Images from '../Images';
 import SidePanel from '../SidePanel';
 import NavBar from '../../components/NavBar';
 import FavoriteNews from '../../components/FavoriteNews';
 import { removeNewsFromFavorite } from '../../reducers/index';
 import { NEWS_SOURCES } from '../../common/constants';
+import StyledDiv from './style';
 
 const DEFAULT_PATH = NEWS_SOURCES[0].shortName;
 
 const App = ({ location: { pathname }, history, favoriteNews, removeNewsFromFavorite }) => (
-  <div className="container-fluid">
+  <StyledDiv className="container-fluid">
     <NavBar
       buttonName={pathname === '/favorite' ? 'back' : 'favorite news'}
       clickHandler={
@@ -27,11 +30,13 @@ const App = ({ location: { pathname }, history, favoriteNews, removeNewsFromFavo
             news={favoriteNews}
             buttonName={'Home'}
             messageText={'There are no favorite news yet. First add a few from'}
-            buttonClickHandler={history.goBack}
+            buttonClickHandler={() => history.push('/')}
             iconClickHandler={removeNewsFromFavorite}
           />
         )}
       />
+      <Route path="/map" component={Map} />
+      <Route path="/images" component={Images} />
       <Route
         path="/:source"
         render={({ match: { params: { source } } }) => (
@@ -42,7 +47,7 @@ const App = ({ location: { pathname }, history, favoriteNews, removeNewsFromFavo
         )}
       />
     </Switch>
-  </div>
+  </StyledDiv>
 );
 
 const mapStateToProps = ({favoriteNews}) => ({ favoriteNews });
