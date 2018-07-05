@@ -5,6 +5,8 @@ import { getImages } from '../../reducers';
 import StyledContainer from './style';
 import debounce from 'lodash.debounce';
 
+const DEBOUNCE_TIME = 800;
+
 class Images extends Component {
   inputChange = text => {
     if (text) {
@@ -12,7 +14,7 @@ class Images extends Component {
     }
   };
 
-  debouncedInputChange = debounce(this.inputChange, 800);
+  debouncedInputChange = debounce(this.inputChange, DEBOUNCE_TIME);
 
   render = () => (
     <div>
