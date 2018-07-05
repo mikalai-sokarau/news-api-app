@@ -2,8 +2,8 @@ import React from 'react';
 
 const SingleImage = ({ url, fullSizeUrl, tags, user }) => {
   return (
-    <div className="col s4 hoverable">
-      <div className="card small">
+    <div className="col s4">
+      <div className="card small hoverable">
         <div className="card-image">
           <a href={fullSizeUrl} target="_blank">
             <img src={url} alt={tags} />
