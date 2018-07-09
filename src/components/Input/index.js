@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = ({ onChangeHandler, placeholder }) => (
+const Input = ({ onChangeHandler, placeholder = '' }) => (
   <div className="input-field">
     <input
       onChange={({ target: { value } }) => onChangeHandler(value)}
