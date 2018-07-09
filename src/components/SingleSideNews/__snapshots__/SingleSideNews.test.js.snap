@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SingleSideNews/> render SingleSideNews 1`] = `
+<div>
+  <div
+    className="divider"
+  />
+  <a
+    target="_blank"
+  >
+    <div
+      className="section"
+    >
+      <h6 />
+    </div>
+  </a>
+</div>
+`;
