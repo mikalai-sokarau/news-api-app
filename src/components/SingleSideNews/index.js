@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SingleSideNews = ({ item: { url, title } }) => (
+const SingleSideNews = ({ url, title }) => (
   <div>
     <div className="divider" />
     <a href={url} target="_blank">
