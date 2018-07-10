@@ -13,7 +13,7 @@ import StyledDiv from './style';
 
 const DEFAULT_PATH = NEWS_SOURCES[0].shortName;
 
-const App = ({ location: { pathname }, history, favoriteNews, removeNewsFromFavorite }) => (
+export const App = ({ location: { pathname }, history, favoriteNews, removeNewsFromFavorite }) => (
   <StyledDiv className="container-fluid">
     <NavBar
       buttonName={pathname === '/favorite' ? 'back' : 'favorite news'}
