@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SidePanel /> should be rendered 1`] = `
+<div
+  className="col s4"
+>
+  <NewsSources />
+  <SideNews
+    getNewsFrom={[Function]}
+  />
+</div>
+`;
