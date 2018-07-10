@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<News /> should be rendered 1`] = `
+<div
+  className="col s8"
+>
+  <Error>
+    <div>
+      <SingleNews
+        addNewsToFavorite={[Function]}
+        item={
+          Object {
+            "url": "url1",
+          }
+        }
+        key="url1"
+      />
+      <SingleNews
+        addNewsToFavorite={[Function]}
+        item={
+          Object {
+            "url": "url2",
+          }
+        }
+        key="url2"
+      />
+      <SingleNews
+        addNewsToFavorite={[Function]}
+        item={
+          Object {
+            "url": "url3",
+          }
+        }
+        key="url3"
+      />
+    </div>
+  </Error>
+</div>
+`;

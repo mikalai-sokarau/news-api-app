@@ -7,7 +7,7 @@ import Error from '../../components/Error';
 
 const DEFAULT_NEWS = NEWS_SOURCES[0];
 
-class News extends Component {
+export class News extends Component {
   getNews = () => {
     const options = {
       consumer: 'news',
