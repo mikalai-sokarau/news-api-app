@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StyledDiv, StyledContainer } from './style';
+import { StyledDiv, StyledContainer, NavBarWrapper } from './style';
 import Button from '../Button';
 
 const NavBar = ({ clickHandler, buttonName }) => (
-  <div className="navbar-fixed">
+  <NavBarWrapper className="navbar-fixed">
     <nav>
       <StyledContainer className="indigo lighten-4 row">
         <div className="col s10">
@@ -12,10 +12,10 @@ const NavBar = ({ clickHandler, buttonName }) => (
             <li>
               <Link to="/" className="bran-logof-center">
                 MY FEED
-              </Link>|
+              </Link>
             </li>
             <li>
-              <Link to="/images"> IMAGES </Link>|
+              <Link to="/images"> IMAGES </Link>
             </li>
             <li>
               <Link to="/map">MAP</Link>
@@ -27,7 +27,7 @@ const NavBar = ({ clickHandler, buttonName }) => (
         </StyledDiv>
       </StyledContainer>
     </nav>
-  </div>
+  </NavBarWrapper>
 );
 
 export default NavBar;
