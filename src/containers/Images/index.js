@@ -18,8 +18,8 @@ export class Images extends Component {
   };
 
   clickHandler = event => {
-    if (event.target.tagName.toLowerCase() !== 'img') {
-      this.props.history.goBack();      
+    if (event.target.tagName === 'DIV') {
+      this.props.history.push('/images');
     }
   };
 
@@ -28,12 +28,16 @@ export class Images extends Component {
       <Route
         path="/images/:id"
         render={({ match: { params: { id } } }) => {
-          const image = this.props.images.find(item => item.id === +id);
-          return (<FullScreenImage 
-            src={image.largeImageURL} 
-            alt={image.tags} 
-            clickHandler={this.clickHandler}
-          />);
+          const index = this.props.images.findIndex(item => item.id === +id);
+          return (
+            <FullScreenImage
+              src={this.props.images[index].largeImageURL}
+              alt={this.props.images[index].tags}
+              clickHandler={this.clickHandler}
+              back={index > 0 ? this.props.images[index - 1].id : null}
+              forward={index < this.props.images.length - 1 ? this.props.images[index + 1].id : null}
+            />
+          );
         }}
       />
       <Route
