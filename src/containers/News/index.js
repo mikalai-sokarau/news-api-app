@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import SingleNews from '../../components/SingleNews';
 import { NEWS_SOURCES } from '../../common/constants';
 import { getNewsFrom, addNewsToFavorite, removeNewsFromFavorite } from '../../reducers/index';
-import Error from '../Error';
+import Error from '../../components/Error';
 
 const DEFAULT_NEWS = NEWS_SOURCES[0];
 
-class News extends Component {
+export class News extends Component {
   getNews = () => {
     const options = {
       consumer: 'news',

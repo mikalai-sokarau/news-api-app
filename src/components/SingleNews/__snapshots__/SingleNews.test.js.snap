@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SingleNews /> should be rendered 1`] = `
+<div
+  className="col s4"
+>
+  <div
+    className="card small hoverable"
+  >
+    <styled.div
+      className="card-image"
+    >
+      <img
+        alt="fake"
+        src="./fake"
+      />
+      <span
+        className="card-title"
+      >
+        fake
+      </span>
+      <ThemeProvider
+        theme={
+          Object {
+            "color": "gold",
+          }
+        }
+      >
+        <Styled(FaStar)
+          onClick={[Function]}
+        />
+      </ThemeProvider>
+    </styled.div>
+    <div
+      className="card-content"
+    >
+      <p>
+        fake
+      </p>
+    </div>
+    <div
+      className="card-action"
+    >
+      <a
+        target="_blank"
+      >
+        FULL ARTICLE
+      </a>
+    </div>
+  </div>
+</div>
+`;

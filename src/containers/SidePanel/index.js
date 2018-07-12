@@ -5,7 +5,7 @@ import SideNews from '../../components/SideNews';
 import NewsSources from '../../components/NewsSources';
 import { ASIDE_NEWS_SOURCES } from '../../common/constants';
 
-class SidePanel extends PureComponent {
+export class SidePanel extends PureComponent {
   componentDidMount() {
     const options = {
       consumer: 'sideNews',

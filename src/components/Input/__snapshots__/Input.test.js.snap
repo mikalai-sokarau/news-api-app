@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> callback works correctly 1`] = `
+<div
+  className="input-field"
+>
+  <input
+    className="validate"
+    onChange={[Function]}
+    placeholder=""
+    type="text"
+  />
+</div>
+`;
+
+exports[`<Input /> render an Input 1`] = `
+<div
+  className="input-field"
+>
+  <input
+    className="validate"
+    onChange={[Function]}
+    placeholder=""
+    type="text"
+  />
+</div>
+`;

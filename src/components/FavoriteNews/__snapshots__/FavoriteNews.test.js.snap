@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoriteNews should render a Message component if news array is empty 1`] = `
+<div
+  className="row"
+>
+  <Message
+    buttonClickHandler={[Function]}
+    buttonName="buttonName"
+    text="messageText"
+  />
+</div>
+`;

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Message/> render a Message 1`] = `
+<styled.div>
+  <span />
+  <a
+    className="waves-effect waves-light btn-small"
+  />
+</styled.div>
+`;

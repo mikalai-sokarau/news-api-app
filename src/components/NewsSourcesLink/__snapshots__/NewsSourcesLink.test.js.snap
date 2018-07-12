@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewsSourcesLink/> render a Message 1`] = `
+<Link
+  className="collection-item active"
+  replace={false}
+  to={
+    Object {
+      "pathname": "/fakeData",
+    }
+  }
+/>
+`;

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBar/> className should be \`navbar-fixed\` 1`] = `
+<div
+  className="navbar-fixed"
+>
+  <nav>
+    <styled.nav
+      className="indigo lighten-4 row"
+    >
+      <div
+        className="col s10"
+      >
+        <ul>
+          <li>
+            <Link
+              className="bran-logof-center"
+              replace={false}
+              to="/"
+            >
+              MY FEED
+            </Link>
+            |
+          </li>
+          <li>
+            <Link
+              replace={false}
+              to="/images"
+            >
+               IMAGES 
+            </Link>
+            |
+          </li>
+          <li>
+            <Link
+              replace={false}
+              to="/map"
+            >
+              MAP
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <styled.div
+        className="col s2"
+      >
+        <Button />
+      </styled.div>
+    </styled.nav>
+  </nav>
+</div>
+`;

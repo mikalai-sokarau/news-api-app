@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewsSources /> className should be \`collection\` 1`] = `
+<div
+  className="collection"
+>
+  <NewsSourcesLink
+    item={
+      Object {
+        "name": "CNN",
+        "query": "sources=cnn",
+        "shortName": "cnn",
+        "type": "top-headlines",
+      }
+    }
+    key="CNN"
+    source="cnn"
+  />
+  <NewsSourcesLink
+    item={
+      Object {
+        "name": "The New York Times",
+        "query": "sources=the-new-york-times",
+        "shortName": "thenewyourktimes",
+        "type": "top-headlines",
+      }
+    }
+    key="The New York Times"
+    source="cnn"
+  />
+  <NewsSourcesLink
+    item={
+      Object {
+        "name": "MTV News",
+        "query": "sources=mtv-news",
+        "shortName": "mtvnews",
+        "type": "top-headlines",
+      }
+    }
+    key="MTV News"
+    source="cnn"
+  />
+  <NewsSourcesLink
+    item={
+      Object {
+        "name": "ESPN",
+        "query": "sources=espn",
+        "shortName": "espn",
+        "type": "top-headlines",
+      }
+    }
+    key="ESPN"
+    source="cnn"
+  />
+</div>
+`;
