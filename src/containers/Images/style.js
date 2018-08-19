@@ -9,4 +9,4 @@ const StyledContainer = styled.div`
   }
 `;
 
-export default StyledContainer;
+export { StyledContainer };

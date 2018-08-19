@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -10,4 +10,8 @@ const StyledContainer = styled.nav`
   display: flex;
 `;
 
-export { StyledDiv, StyledContainer };
+const NavBarWrapper = styled.div`
+  z-index: 1;
+`;
+
+export { StyledDiv, StyledContainer, NavBarWrapper };
